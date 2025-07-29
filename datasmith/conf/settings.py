@@ -110,6 +110,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static_cdn")
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+CORS_ALLOW_METHODS = ["GET", "OPTIONS", "PATCH", "POST", "DELETE"]
+
 REST_FRAMEWORK = {
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
     "PAGE_SIZE": 10,
