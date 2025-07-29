@@ -7,7 +7,7 @@ This project provides a Django REST API for managing transportation providers an
 ## Features
 - CRUD operations for Providers and Service Areas
 - GeoJSON polygon support for service areas
-- Fast spatial search endpoint: find all service areas containing a given lat/lng
+- Fast spatial search endpoint: find all service areas containing a given lat/lng (with Redis caching)
 - Sample data ingestion script for testing
 - Rate limiting and CORS support via Nginx
 - Production-ready deployment scripts (Gunicorn, Nginx, Systemd)
@@ -65,6 +65,7 @@ Base URL: `/api/`
 
 ### Spatial Search
 - `GET /api/service-areas/search?lat={latitude}&lng={longitude}`
+  - Results are cached for 5 minutes per lat/lng query using Redis for fast repeated lookups.
   - Returns all polygons containing the point, with polygon name, provider name, and price.
 
 ## Data Model

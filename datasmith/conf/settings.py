@@ -118,3 +118,26 @@ REST_FRAMEWORK = {
     "PAGE_SIZE": 10,
 }
 SHELL_PLUS = "ptipython"
+
+# Caching configuration (Redis)
+REDIS_USER = os.environ.get("REDIS_USER", "")
+REDIS_PASSWORD = os.environ.get("REDIS_PASSWORD", "")
+REDIS_HOST = os.environ.get("REDIS_HOST", "127.0.0.1")
+REDIS_PORT = os.environ.get("REDIS_PORT", "6379")
+REDIS_DB = os.environ.get("REDIS_DB", "1")
+
+if REDIS_USER and REDIS_PASSWORD:
+    REDIS_URL = f"redis://{REDIS_USER}:{REDIS_PASSWORD}@{REDIS_HOST}:{REDIS_PORT}/{REDIS_DB}"
+else:
+    REDIS_URL = f"redis://{REDIS_HOST}:{REDIS_PORT}/{REDIS_DB}"
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": REDIS_URL,
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        },
+        "KEY_PREFIX": "mozio"
+    }
+}
