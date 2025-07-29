@@ -1,0 +1,14 @@
+[Unit]
+Description=datasmith-gunicorn
+
+[Service]
+User=ubuntu
+WorkingDirectory=/home/ubuntu/mozio/datasmith
+EnvironmentFile=/home/ubuntu/mozio/.env
+ExecStart=/home/ubuntu/mozio/scripts/gunicorn.sh
+StandardOutput=append:/home/ubuntu/mozio/logs/mozio-out.log
+StandardError=append:/home/ubuntu/mozio/logs/mozio-err.log
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

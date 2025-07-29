@@ -1,0 +1,24 @@
+---
+- name: Add Deadsnakes PPA
+  become: true
+  apt_repository:
+    repo: ppa:deadsnakes/ppa
+    state: present
+    update_cache: yes
+
+- name: Install Python
+  become: true
+  apt:
+    pkg:
+      - software-properties-common
+      - python{{ python_version }}
+      - python{{ python_version }}-dev
+      - build-essential
+      - python3-setuptools
+      - python3-pip
+    state: present
+
+- name: Install pipenv
+  shell: |
+    python{{ python_version }} -m pip install pipenv --break-system-packages
+

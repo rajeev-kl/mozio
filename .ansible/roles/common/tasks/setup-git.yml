@@ -1,0 +1,21 @@
+---
+- name: Copy SSH key to VM
+  copy:
+    src: "{{ git_key_source_path }}"
+    dest: "{{ git_key_destination_path }}"
+    mode: 0600
+  
+- name: Copy SSH pub to VM
+  copy:
+    src: "{{ git_key_source_path }}.pub"
+    dest: "{{ git_key_destination_path }}.pub"
+    mode: 0600
+
+- name: Clone or update Git repository using Git+SSH
+  git:
+    repo: "{{ project_repository }}"
+    dest: "{{ project_directory }}"
+    version: master
+    update: yes
+    accept_hostkey: yes
+    key_file: "/home/ubuntu/.ssh/id_rsa"

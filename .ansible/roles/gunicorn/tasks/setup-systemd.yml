@@ -1,0 +1,21 @@
+---
+- name: copy systemd service file
+  become: true
+  copy:
+    src: ../system/datasmith-gunicorn.service
+    dest: /etc/systemd/system/datasmith-gunicorn.service
+    mode: 0644
+
+- name: reload systemd
+  become: true
+  systemd:
+    daemon_reload: yes
+
+- name: start django service
+  become: true
+  service:
+    name: "{{ item }}"
+    state: started
+    enabled: yes
+  loop:
+    - datasmith-gunicorn

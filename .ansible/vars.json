@@ -1,0 +1,22 @@
+{
+    "project_directory": "/home/ubuntu/mozio",
+    "project_repository": "git@github.com:rajeev-kl/mozio.git",
+    "python_version": 3.12,
+    "git_key_source_path": "~/.ssh/id_rsa_prodot",
+    "git_key_destination_path": "/home/ubuntu/.ssh/id_rsa",
+    "ansible_env": {
+        "HOME": "/home/ubuntu",
+        "USER": "ubuntu",
+        "PATH": "/home/ubuntu/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"
+    },
+    "django_env_path": "../.prod.env",
+    "gunicorn": [
+        {
+            "name": "G-01",
+            "ip": "127.0.0.1"
+        }
+    ],
+    "postgres": {
+        "ip": "127.0.0.1"
+    }
+}

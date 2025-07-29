@@ -1,0 +1,11 @@
+---
+- name: Install Postgres dependencies
+  become: true
+  apt:
+    pkg:
+      - libpq-dev
+      - postgresql-client
+      - python3-dev
+      - libgdal-dev
+      - gdal-bin
+    state: present

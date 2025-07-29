@@ -1,0 +1,25 @@
+---
+- name: Install packages from Pipfile
+  shell: |
+    cd "{{ project_directory }}" 
+    pipenv install --deploy --python $(which python{{ python_version }})
+
+- name: create logs directory
+  shell: |
+    mkdir -p "{{ project_directory }}/logs"
+
+- name: Copy environment file
+  copy:
+    src: "{{ django_env_path }}"
+    dest: "{{ project_directory }}/.env"
+    mode: 0600
+
+- name: Run migrations
+  shell: |
+    cd "{{ project_directory }}"
+    pipenv run python datasmith/manage.py migrate --database default --noinput
+
+- name: Collect static files
+  shell: |
+    cd "{{ project_directory }}"
+    pipenv run python datasmith/manage.py collectstatic --noinput

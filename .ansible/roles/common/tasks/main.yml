@@ -1,0 +1,15 @@
+# common setup for gunicorn
+- name: IP Tables
+  import_tasks: setup-iptables.yml
+
+- name: Git
+  import_tasks: setup-git.yml
+
+- name: Python
+  import_tasks: setup-python.yml
+
+- name: PostgreSQL
+  import_tasks: setup-postgres.yml
+
+- name: Django
+  import_tasks: setup-django.yml

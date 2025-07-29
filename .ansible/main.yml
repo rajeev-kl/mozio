@@ -1,0 +1,15 @@
+---
+- hosts: gunicorn
+  user: ubuntu
+
+  vars_files: 
+    - vars.json
+
+  environment:
+    HOME: "{{ ansible_env.HOME }}"
+    USER: "{{ ansible_env.USER }}"
+    PATH: "{{ ansible_env.PATH }}"
+
+  roles:
+    - common
+    - gunicorn

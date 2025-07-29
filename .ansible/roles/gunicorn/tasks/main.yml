@@ -1,0 +1,6 @@
+# setup gunicorn server
+- name: IP Tables
+  import_tasks: setup-iptables.yml
+
+- name: Systemd
+  import_tasks: setup-systemd.yml
