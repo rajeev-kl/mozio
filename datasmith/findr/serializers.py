@@ -1,6 +1,6 @@
-
-from rest_framework_gis.serializers import GeoFeatureModelSerializer
 from rest_framework import serializers
+from rest_framework_gis.serializers import GeoFeatureModelSerializer
+
 from .models import Provider, ServiceArea
 
 
@@ -12,7 +12,9 @@ class ProviderSerializer(serializers.ModelSerializer):
 
 class ServiceAreaSerializer(GeoFeatureModelSerializer):
     provider = ProviderSerializer(read_only=True)
-    provider_id = serializers.PrimaryKeyRelatedField(queryset=Provider.objects.all(), source="provider", write_only=True)
+    provider_id = serializers.PrimaryKeyRelatedField(
+        queryset=Provider.objects.all(), source="provider", write_only=True
+    )
 
     class Meta:
         model = ServiceArea

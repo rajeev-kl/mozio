@@ -1,14 +1,11 @@
 import os
 from pathlib import Path
 
-
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 DEBUG = os.environ.get("DEBUG", "False") == "True"
 SECRET_KEY = os.environ.get("SECRET_KEY", "secret-key")
 DOMAIN = os.environ.get("DOMAIN", "localhost")
-
-FORCE_SCRIPT_NAME = os.environ.get("FORCE_SCRIPT_NAME", "")
 
 
 ALLOWED_HOSTS = [
@@ -45,7 +42,7 @@ INSTALLED_APPS = [
     # rest framework and GIS support
     "django.contrib.gis",
     "rest_framework",
-    'rest_framework_gis',
+    "rest_framework_gis",
     "django_extensions",
     "corsheaders",
     # local apps
@@ -94,18 +91,10 @@ DATABASES = {
 }
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"
-    },
+    {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
+    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
+    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},
+    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
 ]
 
 LANGUAGE_CODE = "en-us"
@@ -122,7 +111,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static_cdn")
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 REST_FRAMEWORK = {
-    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE': 10,
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
+    "PAGE_SIZE": 10,
 }
 SHELL_PLUS = "ptipython"

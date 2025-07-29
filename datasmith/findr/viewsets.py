@@ -1,8 +1,8 @@
-
-from rest_framework import viewsets, status
+from django.contrib.gis.geos import Point
+from rest_framework import status, viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
-from django.contrib.gis.geos import Point
+
 from .models import Provider, ServiceArea
 from .serializers import ProviderSerializer, ServiceAreaSerializer
 
@@ -22,7 +22,9 @@ class ServiceAreaViewSet(viewsets.ModelViewSet):
             lat = float(request.query_params.get("lat"))
             lng = float(request.query_params.get("lng"))
         except (TypeError, ValueError):
-            return Response({"error": "lat and lng query params required and must be float."}, status=status.HTTP_400_BAD_REQUEST)
+            return Response(
+                {"error": "lat and lng query params required and must be float."}, status=status.HTTP_400_BAD_REQUEST
+            )
         point = Point(lng, lat)
         areas = ServiceArea.objects.filter(geojson__contains=point)
         data = [

@@ -1,11 +1,11 @@
 import math
 import random
+
 from django.contrib.gis.geos import Polygon
 from findr.models import Provider, ServiceArea
 
 LANGUAGES = ["en", "es", "fr", "de", "it"]
 CURRENCIES = ["USD", "EUR", "GBP", "INR", "JPY"]
-
 
 
 def random_polygon(center_x, center_y, size=0.1):

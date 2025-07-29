@@ -1,0 +1,64 @@
+.
+├── .ansible
+│   ├── gunicorn.key
+│   ├── inventory.ini
+│   ├── main.yml
+│   ├── roles
+│   │   ├── common
+│   │   │   └── tasks
+│   │   │       ├── main.yml
+│   │   │       ├── setup-django.yml
+│   │   │       ├── setup-git.yml
+│   │   │       ├── setup-iptables.yml
+│   │   │       ├── setup-postgres.yml
+│   │   │       └── setup-python.yml
+│   │   ├── gunicorn
+│   │   │   └── tasks
+│   │   │       ├── main.yml
+│   │   │       └── setup-systemd.yml
+│   │   └── nginx
+│   │       ├── handlers
+│   │       │   └── main.yml
+│   │       ├── tasks
+│   │       │   └── main.yml
+│   │       └── templates
+│   │           └── nginx.conf.j2
+│   └── vars.json
+├── datasmith
+│   ├── conf
+│   │   ├── asgi.py
+│   │   ├── __init__.py
+│   │   ├── settings.py
+│   │   ├── urls.py
+│   │   └── wsgi.py
+│   ├── .env
+│   ├── .env.example
+│   ├── findr
+│   │   ├── apps.py
+│   │   ├── __init__.py
+│   │   ├── migrations
+│   │   │   ├── 0001_initial.py
+│   │   │   └── __init__.py
+│   │   ├── models.py
+│   │   ├── scripts
+│   │   │   └── ingest_sample_data.py
+│   │   ├── serializers.py
+│   │   ├── urls.py
+│   │   └── viewsets.py
+│   └── manage.py
+├── dir.tree
+├── .gitignore
+├── Pipfile
+├── Pipfile.lock
+├── .prod.env
+├── pyproject.toml
+├── readme.md
+├── scripts
+│   ├── formatter.sh
+│   ├── gunicorn.sh
+│   └── logs.sh
+└── system
+    ├── datasmith-gunicorn.service
+    └── nginx.conf
+
+17 directories, 44 files
