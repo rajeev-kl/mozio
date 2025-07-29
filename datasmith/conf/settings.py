@@ -6,13 +6,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 DEBUG = os.environ.get("DEBUG", "False") == "True"
 SECRET_KEY = os.environ.get("SECRET_KEY", "secret-key")
 DOMAIN = os.environ.get("DOMAIN", "localhost")
+IP = os.environ.get("IP", "127.0.0.1")
 
 
 ALLOWED_HOSTS = [
     "127.0.0.1",
+    "0.0.0.0",
     os.environ.get("WEB_HOST", "localhost"),
-    os.environ.get("BACKEND_HOST", "localhost"),
     DOMAIN,
+    IP,
 ]
 
 # Production security settings
