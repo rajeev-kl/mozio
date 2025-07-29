@@ -82,7 +82,7 @@ Run the script `datasmith/findr/scripts/ingest_sample_data.py` to populate the d
 Use `scripts/gunicorn.sh` to start the Gunicorn server with optimal worker settings.
 
 ### Nginx
-Reverse proxy, CORS, and rate limiting are configured in `system/nginx.conf`.
+Reverse proxy, CORS, and rate limiting are configured in `mozio/.ansible/roles/nginx/templates/nginx.conf.j2`.
 
 ### Systemd
 Service file `system/datasmith-gunicorn.service` for process management.
@@ -104,3 +104,20 @@ See `Pipfile` and `Pipfile.lock` for all dependencies. Key packages:
 
 ## Environment Variables
 Configure DB, secret key, and other settings in `.env`.
+
+## Hosting Domain & Server Configuration
+
+### Hosting Domain
+The API is hosted on `mozio.prodot.in`
+
+### Server Configuration
+- **Nginx**: Acts as a reverse proxy, handles HTTPS (SSL/TLS), CORS, and rate limiting. See `mozio/.ansible/roles/nginx/templates/nginx.conf.j2` for example configuration.
+- **Gunicorn**: Runs the Django application. Use `scripts/gunicorn.sh` for optimal worker settings.
+- **Systemd**: Manages Gunicorn as a service. See `system/datasmith-gunicorn.service` for setup instructions.
+- **SSL/TLS**: For production, obtain and configure SSL certificates (e.g., via Let's Encrypt) in your Nginx config.
+- **Environment Variables**: Store sensitive settings (DB credentials, secret key) in `.env` and never commit them to source control.
+
+Refer to the deployment section for more details on configuring each component.
+
+## API Documentation
+Use Postman to import `mozio.postman_collection.json` for interactive API testing and documentation.

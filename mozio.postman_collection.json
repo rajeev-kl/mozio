@@ -1,0 +1,638 @@
+{
+	"info": {
+		"_postman_id": "cbeb4c79-7cf4-4649-8569-0094308329d3",
+		"name": "mozio",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15435533"
+	},
+	"item": [
+		{
+			"name": "providers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://mozio.prodot.in/api/providers/",
+					"protocol": "https",
+					"host": [
+						"mozio",
+						"prodot",
+						"in"
+					],
+					"path": [
+						"api",
+						"providers",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "providers",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://mozio.prodot.in/api/providers/",
+							"protocol": "https",
+							"host": [
+								"mozio",
+								"prodot",
+								"in"
+							],
+							"path": [
+								"api",
+								"providers",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.24.0 (Ubuntu)"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 29 Jul 2025 14:08:55 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "1330"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie, origin"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains; preload"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, OPTIONS, PUT, DELETE, PATCH"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Authorization, Accept, Origin, DNT, X-CustomHeader, Keep-Alive, User-Agent, X-Requested-With, If-Modified-Since, Cache-Control, Content-Type, Content-Range, Range"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"count\": 100,\n    \"next\": \"https://mozio.prodot.in/api/providers/?page=2\",\n    \"previous\": null,\n    \"results\": [\n        {\n            \"id\": 1,\n            \"name\": \"Provider 1\",\n            \"email\": \"provider1@example.com\",\n            \"phone_number\": \"+1234567891\",\n            \"language\": \"de\",\n            \"currency\": \"GBP\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Provider 2\",\n            \"email\": \"provider2@example.com\",\n            \"phone_number\": \"+1234567892\",\n            \"language\": \"es\",\n            \"currency\": \"JPY\"\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Provider 3\",\n            \"email\": \"provider3@example.com\",\n            \"phone_number\": \"+1234567893\",\n            \"language\": \"de\",\n            \"currency\": \"GBP\"\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Provider 4\",\n            \"email\": \"provider4@example.com\",\n            \"phone_number\": \"+1234567894\",\n            \"language\": \"it\",\n            \"currency\": \"USD\"\n        },\n        {\n            \"id\": 5,\n            \"name\": \"Provider 5\",\n            \"email\": \"provider5@example.com\",\n            \"phone_number\": \"+1234567895\",\n            \"language\": \"it\",\n            \"currency\": \"INR\"\n        },\n        {\n            \"id\": 6,\n            \"name\": \"Provider 6\",\n            \"email\": \"provider6@example.com\",\n            \"phone_number\": \"+1234567896\",\n            \"language\": \"fr\",\n            \"currency\": \"EUR\"\n        },\n        {\n            \"id\": 7,\n            \"name\": \"Provider 7\",\n            \"email\": \"provider7@example.com\",\n            \"phone_number\": \"+1234567897\",\n            \"language\": \"es\",\n            \"currency\": \"GBP\"\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Provider 8\",\n            \"email\": \"provider8@example.com\",\n            \"phone_number\": \"+1234567898\",\n            \"language\": \"en\",\n            \"currency\": \"JPY\"\n        },\n        {\n            \"id\": 9,\n            \"name\": \"Provider 9\",\n            \"email\": \"provider9@example.com\",\n            \"phone_number\": \"+1234567899\",\n            \"language\": \"de\",\n            \"currency\": \"EUR\"\n        },\n        {\n            \"id\": 10,\n            \"name\": \"Provider 10\",\n            \"email\": \"provider10@example.com\",\n            \"phone_number\": \"+12345678910\",\n            \"language\": \"es\",\n            \"currency\": \"GBP\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "add provider",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"provider-101\",\n    \"email\": \"provider-101@example.com\",\n    \"phone_number\": \"+1 1010 1111\",\n    \"language\": \"en\",\n    \"currency\": \"USD\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://mozio.prodot.in/api/providers/",
+					"protocol": "https",
+					"host": [
+						"mozio",
+						"prodot",
+						"in"
+					],
+					"path": [
+						"api",
+						"providers",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "add provider",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"provider-101\",\n    \"email\": \"provider-101@example.com\",\n    \"phone_number\": \"+1 1010 1111\",\n    \"language\": \"en\",\n    \"currency\": \"USD\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://mozio.prodot.in/api/providers/",
+							"protocol": "https",
+							"host": [
+								"mozio",
+								"prodot",
+								"in"
+							],
+							"path": [
+								"api",
+								"providers",
+								""
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.24.0 (Ubuntu)"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 29 Jul 2025 14:10:58 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "130"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie, origin"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains; preload"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, OPTIONS, PUT, DELETE, PATCH"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Authorization, Accept, Origin, DNT, X-CustomHeader, Keep-Alive, User-Agent, X-Requested-With, If-Modified-Since, Cache-Control, Content-Type, Content-Range, Range"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 101,\n    \"name\": \"provider-101\",\n    \"email\": \"provider-101@example.com\",\n    \"phone_number\": \"+1 1010 1111\",\n    \"language\": \"en\",\n    \"currency\": \"USD\"\n}"
+				}
+			]
+		},
+		{
+			"name": "update provider",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"provider-101\",\n    \"email\": \"provider-101@example.com\",\n    \"phone_number\": \"+1 1010 2222\",\n    \"language\": \"en\",\n    \"currency\": \"USD\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://mozio.prodot.in/api/providers/101/",
+					"protocol": "https",
+					"host": [
+						"mozio",
+						"prodot",
+						"in"
+					],
+					"path": [
+						"api",
+						"providers",
+						"101",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "update provider",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"provider-101\",\n    \"email\": \"provider-101@example.com\",\n    \"phone_number\": \"+1 1010 2222\",\n    \"language\": \"en\",\n    \"currency\": \"USD\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://mozio.prodot.in/api/providers/101/",
+							"protocol": "https",
+							"host": [
+								"mozio",
+								"prodot",
+								"in"
+							],
+							"path": [
+								"api",
+								"providers",
+								"101",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.24.0 (Ubuntu)"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 29 Jul 2025 14:12:13 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "130"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie, origin"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains; preload"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, OPTIONS, PUT, DELETE, PATCH"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Authorization, Accept, Origin, DNT, X-CustomHeader, Keep-Alive, User-Agent, X-Requested-With, If-Modified-Since, Cache-Control, Content-Type, Content-Range, Range"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 101,\n    \"name\": \"provider-101\",\n    \"email\": \"provider-101@example.com\",\n    \"phone_number\": \"+1 1010 2222\",\n    \"language\": \"en\",\n    \"currency\": \"USD\"\n}"
+				}
+			]
+		},
+		{
+			"name": "delete provider",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"url": {
+					"raw": "https://mozio.prodot.in/api/providers/101/",
+					"protocol": "https",
+					"host": [
+						"mozio",
+						"prodot",
+						"in"
+					],
+					"path": [
+						"api",
+						"providers",
+						"101",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "delete provider",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "https://mozio.prodot.in/api/providers/101/",
+							"protocol": "https",
+							"host": [
+								"mozio",
+								"prodot",
+								"in"
+							],
+							"path": [
+								"api",
+								"providers",
+								"101",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.24.0 (Ubuntu)"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 29 Jul 2025 14:12:52 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "130"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie, origin"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains; preload"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, OPTIONS, PUT, DELETE, PATCH"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Authorization, Accept, Origin, DNT, X-CustomHeader, Keep-Alive, User-Agent, X-Requested-With, If-Modified-Since, Cache-Control, Content-Type, Content-Range, Range"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 101,\n    \"name\": \"provider-101\",\n    \"email\": \"provider-101@example.com\",\n    \"phone_number\": \"+1 1010 2222\",\n    \"language\": \"en\",\n    \"currency\": \"USD\"\n}"
+				}
+			]
+		},
+		{
+			"name": "list service areas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://mozio.prodot.in/api/service-areas/",
+					"protocol": "https",
+					"host": [
+						"mozio",
+						"prodot",
+						"in"
+					],
+					"path": [
+						"api",
+						"service-areas",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "service areas",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://mozio.prodot.in/api/service-areas/",
+							"protocol": "https",
+							"host": [
+								"mozio",
+								"prodot",
+								"in"
+							],
+							"path": [
+								"api",
+								"service-areas",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "nginx/1.24.0 (Ubuntu)"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 29 Jul 2025 14:14:00 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "6959"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept, Cookie, origin"
+						},
+						{
+							"key": "Allow",
+							"value": "GET, POST, HEAD, OPTIONS"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000; includeSubDomains; preload"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Referrer-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Cross-Origin-Opener-Policy",
+							"value": "same-origin"
+						},
+						{
+							"key": "Access-Control-Allow-Credentials",
+							"value": "true"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, OPTIONS, PUT, DELETE, PATCH"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Authorization, Accept, Origin, DNT, X-CustomHeader, Keep-Alive, User-Agent, X-Requested-With, If-Modified-Since, Cache-Control, Content-Type, Content-Range, Range"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"count\": 549,\n    \"next\": \"https://mozio.prodot.in/api/service-areas/?page=2\",\n    \"previous\": null,\n    \"results\": {\n        \"type\": \"FeatureCollection\",\n        \"features\": [\n            {\n                \"id\": 1,\n                \"type\": \"Feature\",\n                \"geometry\": {\n                    \"type\": \"Polygon\",\n                    \"coordinates\": [\n                        [\n                            [\n                                -8.73745411674126,\n                                2.141894161867326\n                            ],\n                            [\n                                -8.798091208800805,\n                                2.251440762227082\n                            ],\n                            [\n                                -8.904473531213906,\n                                2.198439566244304\n                            ],\n                            [\n                                -8.909841241119775,\n                                2.083561493333751\n                            ],\n                            [\n                                -8.803066921470544,\n                                2.048539567356139\n                            ],\n                            [\n                                -8.73745411674126,\n                                2.141894161867326\n                            ]\n                        ]\n                    ]\n                },\n                \"properties\": {\n                    \"name\": \"Area 1 of Provider 1\",\n                    \"price\": \"39.44\",\n                    \"provider\": {\n                        \"id\": 1,\n                        \"name\": \"Provider 1\",\n                        \"email\": \"provider1@example.com\",\n                        \"phone_number\": \"+1234567891\",\n                        \"language\": \"de\",\n                        \"currency\": \"GBP\"\n                    }\n                }\n            },\n            {\n                \"id\": 2,\n                \"type\": \"Feature\",\n                \"geometry\": {\n                    \"type\": \"Polygon\",\n                    \"coordinates\": [\n                        [\n                            [\n                                -8.689502049725085,\n                                2.191894161867325\n                            ],\n                            [\n                                -8.692205415607567,\n                                2.243967640248943\n                            ],\n                            [\n                                -8.735339824639865,\n                                2.276617452407338\n                            ],\n                            [\n                                -8.78218238191143,\n                                2.285121261216552\n                            ],\n                            [\n                                -8.844833839981124,\n                                2.295083438041205\n                            ],\n                            [\n                                -8.890422579063125,\n                                2.256317722587212\n                            ],\n                            [\n                                -8.917005672558608,\n                                2.191894498050146\n                            ],\n                            [\n                                -8.891431079045807,\n                                2.132824577632199\n                            ],\n                            [\n                                -8.827957740574924,\n                                2.116736565331086\n                            ],\n                            [\n                                -8.782182907996814,\n                                2.097868010611875\n                            ],\n                            [\n                                -8.71645828496099,\n                                2.081707081879005\n                            ],\n                            [\n                                -8.672306225712571,\n                                2.129038529979009\n                            ],\n                            [\n                                -8.689502049725085,\n                                2.191894161867325\n                            ]\n                        ]\n                    ]\n                },\n                \"properties\": {\n                    \"name\": \"Area 2 of Provider 1\",\n                    \"price\": \"47.90\",\n                    \"provider\": {\n                        \"id\": 1,\n                        \"name\": \"Provider 1\",\n                        \"email\": \"provider1@example.com\",\n                        \"phone_number\": \"+1234567891\",\n                        \"language\": \"de\",\n                        \"currency\": \"GBP\"\n                    }\n                }\n            },\n            {\n                \"id\": 3,\n                \"type\": \"Feature\",\n                \"geometry\": {\n                    \"type\": \"Polygon\",\n                    \"coordinates\": [\n                        [\n                            [\n                                -8.59155185452201,\n                                2.241894161867326\n                            ],\n                            [\n                                -8.629282218871975,\n                                2.308950587824399\n                            ],\n                            [\n                                -8.671669608597446,\n                                2.366712072646311\n                            ],\n                            [\n                                -8.751222618906107,\n                                2.368992579428019\n                            ],\n                            [\n                                -8.813587018306455,\n                                2.331677914967235\n                            ],\n                            [\n                                -8.849607987001917,\n                                2.275959497562518\n                            ],\n                            [\n                                -8.832953747832834,\n                                2.211689380248486\n                            ],\n                            [\n                                -8.800527636027763,\n                                2.163450969793191\n                            ],\n                            [\n                                -8.751977517579709,\n                                2.099285369943677\n                            ],\n                            [\n                                -8.680175435677944,\n                                2.128947447499673\n                            ],\n                            [\n                                -8.621185545405384,\n                                2.175789005290085\n                            ],\n                            [\n                                -8.59155185452201,\n                                2.241894161867326\n                            ]\n                        ]\n                    ]\n                },\n                \"properties\": {\n                    \"name\": \"Area 3 of Provider 1\",\n                    \"price\": \"26.31\",\n                    \"provider\": {\n                        \"id\": 1,\n                        \"name\": \"Provider 1\",\n                        \"email\": \"provider1@example.com\",\n                        \"phone_number\": \"+1234567891\",\n                        \"language\": \"de\",\n                        \"currency\": \"GBP\"\n                    }\n                }\n            },\n            {\n                \"id\": 4,\n                \"type\": \"Feature\",\n                \"geometry\": {\n                    \"type\": \"Polygon\",\n                    \"coordinates\": [\n                        [\n                            [\n                                -8.719720044678056,\n                                2.141894161867326\n                            ],\n                            [\n                                -8.705005483835185,\n                                2.205411460295155\n                            ],\n                            [\n                                -8.74564900785017,\n                                2.261857434612758\n                            ],\n                            [\n                                -8.814301635239453,\n                                2.283632668206038\n                            ],\n                            [\n                                -8.87666071527445,\n                                2.257000632239941\n                            ],\n                            [\n                                -8.9080262328189,\n                                2.213953023342639\n                            ],\n                            [\n                                -8.974763748375109,\n                                2.176885462754346\n                            ],\n                            [\n                                -8.981818962431218,\n                                2.106920803922127\n                            ],\n                            [\n                                -8.914153705622116,\n                                2.069257467901504\n                            ],\n                            [\n                                -8.877035748099953,\n                                2.015228281858604\n                            ],\n                            [\n                                -8.818288580450927,\n                                2.027197963455033\n                            ],\n                            [\n                                -8.745708931943733,\n                                2.010347599181526\n                            ],\n                            [\n                                -8.725037178673773,\n                                2.083457616056771\n                            ],\n                            [\n                                -8.719720044678056,\n                                2.141894161867326\n                            ]\n                        ]\n                    ]\n                },\n                \"properties\": {\n                    \"name\": \"Area 4 of Provider 1\",\n                    \"price\": \"50.58\",\n                    \"provider\": {\n                        \"id\": 1,\n                        \"name\": \"Provider 1\",\n                        \"email\": \"provider1@example.com\",\n                        \"phone_number\": \"+1234567891\",\n                        \"language\": \"de\",\n                        \"currency\": \"GBP\"\n                    }\n                }\n            },\n            {\n                \"id\": 5,\n                \"type\": \"Feature\",\n                \"geometry\": {\n                    \"type\": \"Polygon\",\n                    \"coordinates\": [\n                        [\n                            [\n                                -8.614456836291051,\n                                2.191894161867325\n                            ],\n                            [\n                                -8.656290376751345,\n                                2.274718063491793\n                            ],\n                            [\n                                -8.716702223064138,\n                                2.326681894166878\n                            ],\n                            [\n                                -8.806229416709055,\n                                2.356495430117385\n                            ],\n                            [\n                                -8.880560459644718,\n                                2.307996951562723\n                            ],\n                            [\n                                -8.908430612257437,\n                                2.228332233063194\n                            ],\n                            [\n                                -8.92300999613548,\n                                2.152563300921552\n                            ],\n                            [\n                                -8.889042783506385,\n                                2.065376476766441\n                            ],\n                            [\n                                -8.802915782681625,\n                                2.052650875400428\n                            ],\n                            [\n                                -8.715018013457131,\n                                2.047165890893547\n                            ],\n                            [\n                                -8.660387716894462,\n                                2.106161689246131\n                            ],\n                            [\n                                -8.614456836291051,\n                                2.191894161867325\n                            ]\n                        ]\n                    ]\n                },\n                \"properties\": {\n                    \"name\": \"Area 5 of Provider 1\",\n                    \"price\": \"57.95\",\n                    \"provider\": {\n                        \"id\": 1,\n                        \"name\": \"Provider 1\",\n                        \"email\": \"provider1@example.com\",\n                        \"phone_number\": \"+1234567891\",\n                        \"language\": \"de\",\n                        \"currency\": \"GBP\"\n                    }\n                }\n            },\n            {\n                \"id\": 6,\n                \"type\": \"Feature\",\n                \"geometry\": {\n                    \"type\": \"Polygon\",\n                    \"coordinates\": [\n                        [\n                            [\n                                -8.570987498895787,\n                                2.241894161867326\n                            ],\n                            [\n                                -8.592440479585495,\n                                2.297940132180421\n                            ],\n                            [\n                                -8.63596634509122,\n                                2.331674789799121\n                            ],\n                            [\n                                -8.661892264855785,\n                                2.387289397129701\n                            ],\n                            [\n                                -8.718115660935954,\n                                2.393339734566075\n                            ],\n                            [\n                                -8.773244446511777,\n                                2.393006983727574\n                            ],\n                            [\n                                -8.81889680048948,\n                                2.354613231741905\n                            ],\n                            [\n                                -8.87971765612883,\n                                2.329888424792266\n                            ],\n                            [\n                                -8.892037054638523,\n                                2.272599614224379\n                            ],\n                            [\n                                -8.885975704578785,\n                                2.215112625272924\n                            ],\n                            [\n                                -8.854525715298216,\n                                2.16553391565286\n                            ],\n                            [\n                                -8.81323764393453,\n                                2.13211420628083\n                            ],\n                            [\n                                -8.768473098150888,\n                                2.108218705156316\n                            ],\n                            [\n                                -8.718203429810767,\n                                2.082090438734263\n                            ],\n                            [\n                                -8.661444392510399,\n                                2.098315402423241\n                            ],\n                            [\n                                -8.621756915534675,\n                                2.13627566013814\n                            ],\n                            [\n                                -8.620094968865407,\n                                2.198514441186595\n                            ],\n                            [\n                                -8.570987498895787,\n                                2.241894161867326\n                            ]\n                        ]\n                    ]\n                },\n                \"properties\": {\n                    \"name\": \"Area 6 of Provider 1\",\n                    \"price\": \"48.31\",\n                    \"provider\": {\n                        \"id\": 1,\n                        \"name\": \"Provider 1\",\n                        \"email\": \"provider1@example.com\",\n                        \"phone_number\": \"+1234567891\",\n                        \"language\": \"de\",\n                        \"currency\": \"GBP\"\n                    }\n                }\n            },\n            {\n                \"id\": 7,\n                \"type\": \"Feature\",\n                \"geometry\": {\n                    \"type\": \"Polygon\",\n                    \"coordinates\": [\n                        [\n                            [\n                                -8.640833938916368,\n                                2.141894161867326\n                            ],\n                            [\n                                -8.727928838060643,\n                                2.275418576845822\n                            ],\n                            [\n                                -8.874078468829318,\n                                2.31179679142828\n                            ],\n                            [\n                                -8.965321421615075,\n                                2.202864319822163\n                            ],\n                            [\n                                -8.978322884589973,\n                                2.075722064661205\n                            ],\n                            [\n                                -8.860493124908709,\n                                2.008100025262337\n                            ],\n                            [\n                                -8.723384383869078,\n                                2.005595138712954\n                            ],\n                            [\n                                -8.640833938916368,\n                                2.141894161867326\n                            ]\n                        ]\n                    ]\n                },\n                \"properties\": {\n                    \"name\": \"Area 7 of Provider 1\",\n                    \"price\": \"55.19\",\n                    \"provider\": {\n                        \"id\": 1,\n                        \"name\": \"Provider 1\",\n                        \"email\": \"provider1@example.com\",\n                        \"phone_number\": \"+1234567891\",\n                        \"language\": \"de\",\n                        \"currency\": \"GBP\"\n                    }\n                }\n            },\n            {\n                \"id\": 8,\n                \"type\": \"Feature\",\n                \"geometry\": {\n                    \"type\": \"Polygon\",\n                    \"coordinates\": [\n                        [\n                            [\n                                -8.63339283371778,\n                                2.191894161867325\n                            ],\n                            [\n                                -8.683880145712537,\n                                2.358042900160862\n                            ],\n                            [\n                                -8.881116159963835,\n                                2.354522693174479\n                            ],\n                            [\n                                -8.982080719498889,\n                                2.191894664625628\n                            ],\n                            [\n                                -8.868919465479664,\n                                2.03595542641886\n                            ],\n                            [\n                                -8.691141884312465,\n                                2.03522700876612\n                            ],\n                            [\n                                -8.63339283371778,\n                                2.191894161867325\n                            ]\n                        ]\n                    ]\n                },\n                \"properties\": {\n                    \"name\": \"Area 8 of Provider 1\",\n                    \"price\": \"17.00\",\n                    \"provider\": {\n                        \"id\": 1,\n                        \"name\": \"Provider 1\",\n                        \"email\": \"provider1@example.com\",\n                        \"phone_number\": \"+1234567891\",\n                        \"language\": \"de\",\n                        \"currency\": \"GBP\"\n                    }\n                }\n            },\n            {\n                \"id\": 9,\n                \"type\": \"Feature\",\n                \"geometry\": {\n                    \"type\": \"Polygon\",\n                    \"coordinates\": [\n                        [\n                            [\n                                -8.51932273062605,\n                                2.241894161867326\n                            ],\n                            [\n                                -8.820876160116729,\n                                2.396098304416139\n                            ],\n                            [\n                                -8.832593982936555,\n                                2.051034845560411\n                            ],\n                            [\n                                -8.51932273062605,\n                                2.241894161867326\n                            ]\n                        ]\n                    ]\n                },\n                \"properties\": {\n                    \"name\": \"Area 9 of Provider 1\",\n                    \"price\": \"14.22\",\n                    \"provider\": {\n                        \"id\": 1,\n                        \"name\": \"Provider 1\",\n                        \"email\": \"provider1@example.com\",\n                        \"phone_number\": \"+1234567891\",\n                        \"language\": \"de\",\n                        \"currency\": \"GBP\"\n                    }\n                }\n            },\n            {\n                \"id\": 10,\n                \"type\": \"Feature\",\n                \"geometry\": {\n                    \"type\": \"Polygon\",\n                    \"coordinates\": [\n                        [\n                            [\n                                0.571499991956559,\n                                8.30832353180093\n                            ],\n                            [\n                                0.594764420659912,\n                                8.36428676857032\n                            ],\n                            [\n                                0.549307659601331,\n                                8.404034166569101\n                            ],\n                            [\n                                0.492951084657272,\n                                8.396430159991864\n                            ],\n                            [\n                                0.443220304542581,\n                                8.39872462010672\n                            ],\n                            [\n                                0.394184053145951,\n                                8.36875634592874\n                            ],\n                            [\n                                0.410866320627574,\n                                8.308323748911809\n                            ],\n                            [\n                                0.391688735975508,\n                                8.25094497169189\n                            ],\n                            [\n                                0.447876884336983,\n                                8.22839259237507\n                            ],\n                            [\n                                0.492950614979837,\n                                8.221008177627851\n                            ],\n                            [\n                                0.547949393665969,\n                                8.214547855377774\n                            ],\n                            [\n                                0.592887766675789,\n                                8.251434332220592\n                            ],\n                            [\n                                0.571499991956559,\n                                8.30832353180093\n                            ]\n                        ]\n                    ]\n                },\n                \"properties\": {\n                    \"name\": \"Area 1 of Provider 2\",\n                    \"price\": \"54.07\",\n                    \"provider\": {\n                        \"id\": 2,\n                        \"name\": \"Provider 2\",\n                        \"email\": \"provider2@example.com\",\n                        \"phone_number\": \"+1234567892\",\n                        \"language\": \"es\",\n                        \"currency\": \"JPY\"\n                    }\n                }\n            }\n        ]\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "find providers by point",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://mozio.prodot.in/api/service-areas/search/?lat=-8.83&lng=2.18",
+					"protocol": "https",
+					"host": [
+						"mozio",
+						"prodot",
+						"in"
+					],
+					"path": [
+						"api",
+						"service-areas",
+						"search",
+						""
+					],
+					"query": [
+						{
+							"key": "lat",
+							"value": "-8.83"
+						},
+						{
+							"key": "lng",
+							"value": "2.18"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
