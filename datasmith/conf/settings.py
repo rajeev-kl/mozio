@@ -8,6 +8,8 @@ DEBUG = os.environ.get("DEBUG", "False") == "True"
 SECRET_KEY = os.environ.get("SECRET_KEY", "secret-key")
 DOMAIN = os.environ.get("DOMAIN", "localhost")
 
+FORCE_SCRIPT_NAME = os.environ.get("FORCE_SCRIPT_NAME", "")
+
 
 ALLOWED_HOSTS = [
     "127.0.0.1",
