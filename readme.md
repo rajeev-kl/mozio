@@ -1,18 +1,106 @@
-Prompt:
-As Mozio expands internationally, we have a growing problem that many transportation suppliers we'd like to integrate, cannot give us concrete zip codes, cities, etc that they serve.
-To combat this, we'd like to be able to define custom polygons as their "service area" and we'd like for the owners of these shuttle companies to be able to define and alter their
-polygons whenever they want, eliminating the need for Mozio’s employees to do this boring grunt work.
 
-Requirement:
-Build a JSON REST API with CRUD operations for Provider (name, email, phone number, language an currency) and ServiceArea (name, price, geojson information)
-Create a specific endpoint that takes a lat/lng pair as arguments and returns a list of all polygons that include the given lat/lng. The name of the polygon, provider's name, and price should be returned for each polygon. This operation should be FAST.
-Use unit tests to test your code;
-Write up some API docs (using any tool you see fit);
-Create a Github account (if you don’t have one), push all your code and share the link with us;
-Deploy your code to a hosting service of your choice. Mozio is built entirely on AWS, so bonus points will be awarded for the use of AWS.
+# Mozio Service Area API
 
-Considerations:
-All of this should be built in Python DjangoRest or FastAPI. 
-Use any extra libraries you think will help, choose whatever database you think is best fit for the task, and use caching as you see fit.
-If possible also provide an API Gateway with Rate Limiting.
-Ensure that your code is clean, follows standard PEP8 style (though you can use 120 characters per line) and has comments where appropriate.
+## Overview
+This project provides a Django REST API for managing transportation providers and their service areas using custom polygons. It allows providers to define, update, and query their service areas, supporting fast spatial queries and scalable integration.
+
+## Features
+- CRUD operations for Providers and Service Areas
+- GeoJSON polygon support for service areas
+- Fast spatial search endpoint: find all service areas containing a given lat/lng
+- Sample data ingestion script for testing
+- Rate limiting and CORS support via Nginx
+- Production-ready deployment scripts (Gunicorn, Nginx, Systemd)
+- PEP8-compliant codebase with comments
+
+## Project Structure
+```
+datasmith/
+  conf/         # Django project config (settings, urls, wsgi, asgi)
+  findr/        # Main app: models, serializers, viewsets, migrations, scripts
+    scripts/    # Data ingestion and utilities
+  .env          # Environment variables
+scripts/        # Formatting, server, and log scripts
+system/         # Gunicorn systemd service, Nginx config
+Pipfile, Pipfile.lock, pyproject.toml
+```
+
+## Setup & Installation
+1. **Clone the repo**
+2. **Install dependencies:**
+   ```bash
+   pipenv install --dev
+   ```
+3. **Configure environment:**
+   - Copy `.env.example` to `.env` and set DB credentials, secret key, etc.
+4. **Run migrations:**
+   ```bash
+   pipenv run python datasmith/manage.py migrate
+   ```
+5. **Ingest sample data:**
+   ```bash
+   pipenv run python datasmith/findr/scripts/ingest_sample_data.py
+   ```
+6. **Start development server:**
+   ```bash
+   pipenv run python datasmith/manage.py runserver
+   ```
+
+## API Endpoints
+Base URL: `/api/`
+
+### Provider
+- `GET /api/providers/` — List providers
+- `POST /api/providers/` — Create provider
+- `GET /api/providers/{id}/` — Retrieve provider
+- `PUT/PATCH /api/providers/{id}/` — Update provider
+- `DELETE /api/providers/{id}/` — Delete provider
+
+### Service Area
+- `GET /api/service-areas/` — List service areas
+- `POST /api/service-areas/` — Create service area
+- `GET /api/service-areas/{id}/` — Retrieve service area
+- `PUT/PATCH /api/service-areas/{id}/` — Update service area
+- `DELETE /api/service-areas/{id}/` — Delete service area
+
+### Spatial Search
+- `GET /api/service-areas/search?lat={latitude}&lng={longitude}`
+  - Returns all polygons containing the point, with polygon name, provider name, and price.
+
+## Data Model
+**Provider**
+- name, email, phone_number, language, currency
+
+**ServiceArea**
+- provider (FK), name, price, geojson (Polygon)
+
+## Sample Data
+Run the script `datasmith/findr/scripts/ingest_sample_data.py` to populate the database with 100 providers and random overlapping polygons.
+
+## Deployment
+### Gunicorn
+Use `scripts/gunicorn.sh` to start the Gunicorn server with optimal worker settings.
+
+### Nginx
+Reverse proxy, CORS, and rate limiting are configured in `system/nginx.conf`.
+
+### Systemd
+Service file `system/datasmith-gunicorn.service` for process management.
+
+## Testing
+Run tests with:
+```bash
+pipenv run python datasmith/manage.py test findr
+```
+
+## Development & Formatting
+- Use `scripts/formatter.sh` for code formatting (isort, black, flake8)
+- PEP8 style, 120 chars/line
+
+## Dependencies
+See `Pipfile` and `Pipfile.lock` for all dependencies. Key packages:
+- Django, Django REST Framework, djangorestframework-gis, psycopg2-binary
+- Gunicorn, django-cors-headers, django-extensions
+
+## Environment Variables
+Configure DB, secret key, and other settings in `.env`.

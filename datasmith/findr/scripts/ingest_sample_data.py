@@ -28,6 +28,11 @@ def random_polygon(center_x, center_y, size=0.1):
 def run():
     Provider.objects.all().delete()
     ServiceArea.objects.all().delete()
+    # Generate base centers for each provider to encourage overlap
+    provider_centers = [
+        (random.uniform(-10, 10), random.uniform(-10, 10)) for _ in range(100)
+    ]
+
     for i in range(100):
         provider = Provider.objects.create(
             name=f"Provider {i+1}",
@@ -37,11 +42,18 @@ def run():
             currency=random.choice(CURRENCIES),
         )
         num_areas = random.randint(1, 10)
-        base_x, base_y = random.uniform(-10, 10), random.uniform(-10, 10)
+        # Pick a base center for this provider
+        base_x, base_y = provider_centers[i]
         for j in range(num_areas):
-            # Overlap some polygons by shifting centers slightly
-            shift = (j % 3) * 0.05  # every 3rd polygon overlaps
-            poly = random_polygon(base_x + shift, base_y + shift, size=0.1 + 0.01 * j)
+            # Overlap with other providers by picking a center from another provider
+            overlap_with = random.choice([
+                idx for idx in range(100) if idx != i
+            ])
+            overlap_x, overlap_y = provider_centers[overlap_with]
+            # Blend the centers for overlap
+            center_x = (base_x + overlap_x) / 2 + random.uniform(-0.02, 0.02)
+            center_y = (base_y + overlap_y) / 2 + random.uniform(-0.02, 0.02)
+            poly = random_polygon(center_x, center_y, size=0.1 + 0.01 * j)
             ServiceArea.objects.create(
                 provider=provider,
                 name=f"Area {j+1} of Provider {i+1}",
