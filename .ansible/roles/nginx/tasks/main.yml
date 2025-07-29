@@ -8,13 +8,6 @@
     - certbot
     state: present
 
-- name: Configure Nginx
-  become: true
-  template:
-    src: nginx.conf.j2
-    dest: /etc/nginx/sites-available/default
-  notify: Restart Nginx
-
 - name: Ensure Nginx is running
   become: true
   service:
@@ -26,6 +19,13 @@
   become: true
   command: certbot --nginx -d {{ server_name }} --non-interactive --agree-tos --email {{ nginx_email }}
   when: nginx_ssl_enabled | bool
+
+- name: Configure Nginx
+  become: true
+  template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/sites-available/default
+  notify: Restart Nginx
 
 - name: Reload Nginx to apply changes
   become: true
