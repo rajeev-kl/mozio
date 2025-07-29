@@ -1,0 +1,31 @@
+---
+- name: Install Nginx
+  apt:
+    name: nginx
+    state: present
+
+- name: Configure Nginx
+  template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/sites-available/default
+  notify: Restart Nginx
+
+- name: Ensure Nginx is running
+  service:
+    name: nginx
+    state: started
+    enabled: true
+
+
+- name: Install certbot
+  apt:
+    name: certbot
+    state: present
+- name: Obtain SSL certificate
+  command: certbot --nginx -d {{ server_name }} --non-interactive --agree-tos --email {{ nginx_email }}
+  when: nginx_ssl_enabled | bool
+
+- name: Reload Nginx to apply changes
+  service:
+    name: nginx
+    state: reloaded

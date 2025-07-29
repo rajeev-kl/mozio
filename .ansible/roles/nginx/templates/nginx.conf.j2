@@ -1,0 +1,68 @@
+limit_req_zone $binary_remote_addr zone=one:10m rate=100r/m;
+
+map $http_origin $origin_allowed {
+    default 0;
+    http://localhost:7100 1;
+    http://127.0.0.1:7100 1;
+}
+
+map $origin_allowed $origin {
+    default "";
+    1 $http_origin;
+}
+
+server {
+  allow all;
+  deny 10.0.0.0/8;
+  deny 172.16.0.0/12;
+
+  server_name {{ server_name }};
+  listen 443 ssl; # managed by Certbot
+
+  ssl_certificate /etc/letsencrypt/live/{{ server_name }}/fullchain.pem; # managed by Certbot
+  ssl_certificate_key /etc/letsencrypt/live/{{ server_name }}/privkey.pem; # managed by Certbot
+  include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+  ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+  location = /favicon.ico {
+    access_log off; log_not_found off;
+  }
+
+  location /static/ {
+    autoindex on;
+    proxy_read_timeout 300s;
+    proxy_connect_timeout 75s;
+    alias '/home/ubuntu/mozio/datasmith/static_cdn/';
+  }
+
+  location /datasmith/ {
+    if ($request_method = OPTIONS) {
+      return 204;
+    }
+    limit_req zone=one burst=10 delay=5;
+
+    add_header 'Access-Control-Allow-Origin' "$origin" always;
+    add_header 'Access-Control-Allow-Credentials' 'true' always;
+    add_header 'Access-Control-Allow-Methods' 'GET, POST, OPTIONS, PUT, DELETE, PATCH' always;
+    add_header 'Access-Control-Allow-Headers' 'Authorization, Accept, Origin, DNT, X-CustomHeader, Keep-Alive, User-Agent, X-Requested-With, If-Modified-Since, Cache-Control, Content-Type, Content-Range, Range' always;
+
+    proxy_read_timeout 300;
+    proxy_connect_timeout 75;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header Host $host;
+    proxy_set_header X-NginX-Proxy true;
+    proxy_pass http://127.0.0.1:7100/;
+    proxy_redirect http://127.0.0.1:7100/ https://$host/datasmith/;
+  }
+}
+
+server {
+    if ($host = {{ server_name }}) {
+        return 301 https://$host$request_uri;
+    } # managed by Certbot
+
+  listen 80;
+  server_name {{ server_name }};
+  return 404; # managed by Certbot
+}
