@@ -79,6 +79,7 @@ Base URL: `/api/`
 Run the script `datasmith/findr/scripts/ingest_sample_data.py` to populate the database with 100 providers and random overlapping polygons.
 
 ## Deployment
+
 ### Gunicorn
 Use `scripts/gunicorn.sh` to start the Gunicorn server with optimal worker settings.
 
@@ -87,6 +88,15 @@ Reverse proxy, CORS, and rate limiting are configured in `mozio/.ansible/roles/n
 
 ### Systemd
 Service file `system/datasmith-gunicorn.service` for process management.
+
+### AWS Deployment
+If you want to deploy this project on AWS, simply launch an EC2 instance and run the provided Ansible playbook to automate the setup and deployment. The playbook will configure all necessary services (Nginx, Gunicorn, Systemd, etc.) for production use.
+
+To execute the Ansible playbook, run:
+```bash
+ansible-playbook .ansible/main.yml -i .ansible/inventory.ini
+```
+Refer to the Ansible documentation in the repository for details.
 
 ## Testing
 Run tests with:
@@ -108,8 +118,9 @@ Configure DB, secret key, and other settings in `.env`.
 
 ## Hosting Domain & Server Configuration
 
+
 ### Hosting Domain
-The API is hosted on `mozio.prodot.in`
+The API is currently deployed on an Oracle ARM instance with 4 CPU cores and 24GB RAM, accessible at `mozio.prodot.in`.
 
 ### Server Configuration
 - **Nginx**: Acts as a reverse proxy, handles HTTPS (SSL/TLS), CORS, and rate limiting. See `mozio/.ansible/roles/nginx/templates/nginx.conf.j2` for example configuration.
