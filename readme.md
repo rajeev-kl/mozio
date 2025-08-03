@@ -47,7 +47,7 @@ Pipfile, Pipfile.lock, pyproject.toml
    ```
 
 ## API Endpoints
-Base URL: `/api/`
+Base URL: `https://mozio.prodot.in/` | Local: `http://localhost:8000/`
 
 ### Provider
 - `GET /api/providers/` — List providers
